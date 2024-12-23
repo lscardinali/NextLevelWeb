@@ -1,0 +1,11 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+	color: white;
+}
+
+html {
+	background: linear-gradient(to bottom, #000000, #011631);
+}
