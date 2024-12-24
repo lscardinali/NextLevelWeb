@@ -1,0 +1,41 @@
+{
+    "short_name": "NextLevel",
+    "name": "NextLevel",
+    "description": "Manage and explore your game library with NextLevel, your ultimate game hub.",
+    "icons": [
+      {
+        "src": "/icon.png",
+        "sizes": "1024x1024",
+        "type": "image/png",
+        "purpose": "any maskable"
+      }
+    ],
+    "id": "/nextlevel",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#000",
+    "theme_color": "#000",
+    "orientation": "portrait",
+    "scope": "/",
+    "lang": "en-US",
+    "related_applications": [
+      {
+        "platform": "webapp",
+        "url": "https://www.nextlevel.app",
+        "id": "https://www.nextlevel.app"
+      }
+    ],
+    "prefer_related_applications": false,
+    "apple": {
+      "apple-mobile-web-app-capable": "yes",
+      "apple-mobile-web-app-status-bar-style": "black",
+      "apple-mobile-web-app-title": "NextLevel",
+      "icons": [
+        {
+          "src": "/icon.png",
+          "sizes": "1024x1024",
+          "type": "image/png"
+        }
+      ]
+    }
+  }

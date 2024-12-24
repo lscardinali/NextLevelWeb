@@ -5,6 +5,7 @@ interface SteamGame {
     header_image: string;
     about_the_game: string;
     movies: [SteamGameMovie];
+    screenshots: [SteamGameScreenshot];
     is_free: boolean;
 }
 
@@ -16,6 +17,11 @@ interface SteamGameMovieResolution {
     480: string;
     max: string;
 }
+
+interface SteamGameScreenshot {
+    path_full: string;
+}
+
 interface SteamGameResponse {
     data: SteamGame;
 }

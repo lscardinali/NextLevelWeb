@@ -77,6 +77,17 @@
 		}
 	];
 </script>
+<div class="flex flex-row mx-2 mt-2">
+	<input
+	type="text"
+	placeholder="Search for a game"
+	class="flex-1 rounded-lg border border-neutral-600 bg-black p-1 mr-4"
+/>
+	<button class="text-rose-500 flex flex-row items-center gap-2">
+		<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M32 144h448M112 256h288M208 368h96"/></svg>
+	<p>Filter</p>
+	</button>
+</div>
 
 <div class="grid grid-cols-2 gap-2 p-2 md:grid-cols-3 lg:grid-cols-4">
 	{#each games as game, index (game)}

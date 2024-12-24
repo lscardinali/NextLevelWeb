@@ -5,13 +5,13 @@
 
 <div class="mx-auto flex w-full flex-col lg:w-[1200px]">
 	<header
-		class="sticky top-0 z-10 flex flex-row items-center justify-between border-b border-gray-800 bg-black bg-opacity-70 px-4 py-3 backdrop-blur-xl"
+		class="fixed top-0 z-10 flex w-full flex-row items-center justify-between border-b border-gray-800 bg-black bg-opacity-50 px-4 py-3 backdrop-blur-xl"
 	>
 		<a
 			href="/"
-			class="bg-gradient-to-tr from-blue-500 via-pink-500 to-rose-500 bg-clip-text text-2xl font-bold text-transparent"
+			class="text-2xl font-light"
 		>
-			NextLevel
+			SecretLevel
 		</a>
 		<div class="flex flex-row gap-2">
 			<p class="flex flex-row items-center text-sm text-pink-500">
@@ -52,7 +52,7 @@
 			</a> -->
 		</div>
 	</header>
-	<div class="flex flex-row">
+	<div class="flex flex-row py-14">
 		<aside class="mr-4 hidden w-1/5 flex-col gap-1 md:flex">
 			<a
 				href="/games/1"
@@ -151,9 +151,9 @@
 		</main>
 	</div>
 	<footer
-		class="sticky bottom-0 left-0 right-0 z-10 flex flex-row justify-evenly border-t border-gray-900 bg-[#040a13] bg-opacity-70 p-2 backdrop-blur-xl md:hidden"
+		class="fixed bottom-0 left-0 right-0 z-10 flex flex-row justify-evenly border-t border-gray-900 bg-[#040a13] bg-opacity-70 py-2 backdrop-blur-xl md:hidden"
 	>
-		<a href="/" class="flex flex-col items-center text-rose-500">
+		<a href="/" class="flex flex-col items-center text-rose-500 flex-1">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -168,9 +168,13 @@
 					d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
 				/>
 			</svg>
-			<span class="text-sm">Hub</span>
+			<span class="text-xs">Hub</span>
 		</a>
-		<a href="/games" class="flex flex-col items-center">
+		<a href="/games" class="flex flex-col items-center text-neutral-500  flex-1">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 512 512"><path d="M467.51 248.83c-18.4-83.18-45.69-136.24-89.43-149.17A91.5 91.5 0 00352 96c-26.89 0-48.11 16-96 16s-69.15-16-96-16a99.09 99.09 0 00-27.2 3.66C89 112.59 61.94 165.7 43.33 248.83c-19 84.91-15.56 152 21.58 164.88 26 9 49.25-9.61 71.27-37 25-31.2 55.79-40.8 119.82-40.8s93.62 9.6 118.66 40.8c22 27.41 46.11 45.79 71.42 37.16 41.02-14.01 40.44-79.13 21.43-165.04z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><circle cx="292" cy="224" r="20"/><path d="M336 288a20 20 0 1120-19.95A20 20 0 01336 288z"/><circle cx="336" cy="180" r="20"/><circle cx="380" cy="224" r="20"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M160 176v96M208 224h-96"/></svg>
+			<span class="text-xs">Library</span>
+		</a>
+		<a href="/search" class="flex flex-col items-center text-neutral-500 flex-1">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -185,9 +189,9 @@
 					d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
 				/>
 			</svg>
-			<span class="text-sm">Search</span>
+			<span class="text-xs">Search</span>
 		</a>
-		<a href="/games" class="flex flex-col items-center">
+		<a href="/games" class="flex flex-col items-center text-neutral-500 flex-1">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -202,7 +206,24 @@
 					d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
 				/>
 			</svg>
-			<span class="text-sm">Games</span>
+			<span class="text-xs">Games</span>
+		</a>
+		<a href="/games" class="flex flex-col items-center text-neutral-500 flex-1">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="h-6 w-6"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+				/>
+			</svg>
+			<span class="text-xs">Games</span>
 		</a>
 	</footer>
 </div>

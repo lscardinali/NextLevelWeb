@@ -1,3 +1,12 @@
+<script>
+
+	import Switch from "$lib/components/switch.svelte";
+
+	let isSwitchChecked = $state(false);
+	let selectedTab = $state('first');
+	let isOpen = $state(false);
+
+</script>
 <section class="flex flex-col gap-2 p-4">
 	<h1 class="text-neutral-400">Linked Accounts</h1>
 	<ul class="flex flex-col gap-2 overflow-auto rounded-xl bg-neutral-900">
@@ -69,13 +78,7 @@
 				</svg>
 				<p>Steam Deck</p>
 			</span>
-			<div
-				class="relative inline-flex h-7 w-11 items-center rounded-full bg-lime-500 transition-colors duration-200 ease-in-out hover:cursor-pointer"
-			>
-				<div
-					class="absolute h-5 w-5 translate-x-5 transform rounded-full bg-white shadow-md transition-transform duration-200 ease-in-out"
-				></div>
-			</div>
+			<Switch bind:value={isSwitchChecked} />
 		</li>
 		<li class="flex flex-row items-center justify-between border-b border-neutral-800 p-4">
 			<span class="flex flex-row items-center gap-2">
@@ -91,12 +94,139 @@
 				</svg>
 				<p>Nintendo Switch</p>
 			</span>
-			<div
-				class="relative inline-flex h-7 w-11 items-center rounded-full bg-neutral-500 transition-colors duration-200 ease-in-out hover:cursor-pointer"
-			>
-				<div
-					class="absolute h-5 w-5 translate-x-1 transform rounded-full bg-white shadow-md transition-transform duration-200 ease-in-out"
-				></div>
+			<Switch value={isSwitchChecked} />
+		</li>
+		<li>
+			<div class="relative p-4">
+				<input type="text" 
+					class="peer w-full rounded-lg bg-neutral-800 p-4 outline-none transition-all placeholder:text-transparent focus:outline-none" 
+					placeholder="Enter text" />
+				<label class="absolute left-8 top-8 text-neutral-400 transition-all peer-focus:-translate-y-3 peer-focus:text-sm peer-[:not(:placeholder-shown)]:-translate-y-7 peer-[:not(:placeholder-shown)]:text-sm">
+					Enter text
+				</label>
+			</div>
+		</li>
+
+		<li>
+			<div class="relative p-4">
+				<button 
+					class="flex items-center gap-2 rounded-lg bg-neutral-800 px-4 py-2 text-neutral-400 hover:bg-neutral-700 transition-colors"
+					on:click={() => {
+						const popover = document.getElementById('options-popover');
+						popover?.classList.toggle('opacity-0');
+						popover?.classList.toggle('pointer-events-none');
+						const arrow = document.getElementById('arrow-icon');
+						arrow?.classList.toggle('rotate-180');
+					}}
+				>
+					<span>Additional Options</span>
+					<svg 
+						id="arrow-icon"
+						xmlns="http://www.w3.org/2000/svg" 
+						viewBox="0 0 20 20"
+						fill="currentColor"
+						class="h-5 w-5 transition-transform duration-200"
+					>
+						<path d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" />
+					</svg>
+				</button>
+
+				<div 
+					id="options-popover"
+					class="absolute left-4 right-4 top-16 flex-col gap-2 rounded-lg bg-neutral-800 p-2 shadow-lg opacity-0 pointer-events-none transition-opacity duration-200"
+				>
+					<button class="rounded-md px-4 py-2 text-left hover:bg-neutral-700 transition-colors">
+						Option 1
+					</button>
+					<button class="rounded-md px-4 py-2 text-left hover:bg-neutral-700 transition-colors">
+						Option 2
+					</button>
+					<button class="rounded-md px-4 py-2 text-left hover:bg-neutral-700 transition-colors">
+						Option 3
+					</button>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="relative p-4">
+				<div class="relative flex w-full max-w-[300px] rounded-lg bg-neutral-800 p-1">
+					<div 
+						class="absolute h-[calc(100%-8px)] w-[calc(50%-4px)] rounded-md bg-neutral-700 transition-transform duration-200"
+						style="transform: translateX({selectedTab === 'second' ? '100%' : '0%'})"
+					>
+					</div>
+					<button 
+						class="relative z-10 flex-1 rounded-md px-4 py-2 text-sm transition-colors"
+						class:text-white={selectedTab === 'first'}
+						class:text-neutral-400={selectedTab !== 'first'}
+						on:click={() => selectedTab = 'first'}
+					>
+						First Tab
+					</button>
+					<button 
+						class="relative z-10 flex-1 rounded-md px-4 py-2 text-sm transition-colors"
+						class:text-white={selectedTab === 'second'}
+						class:text-neutral-400={selectedTab !== 'second'}
+						on:click={() => selectedTab = 'second'}
+					>
+						Second Tab
+					</button>
+				</div>
+			</div>
+
+			<script>
+				let selectedTab = 'first';
+			</script>
+		</li>
+
+		<li>
+			<div class="relative p-4">
+				<button 
+					class="flex w-full items-center justify-between rounded-lg bg-neutral-800 p-4 text-left"
+					on:click={() => isOpen = !isOpen}
+				>
+					<span>Accordion Title</span>
+					<svg 
+						class="h-5 w-5 transition-transform duration-200"
+						style="transform: rotate({isOpen ? '180deg' : '0deg'})"
+						xmlns="http://www.w3.org/2000/svg" 
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor" 
+						stroke-width="2"
+						stroke-linecap="round" 
+						stroke-linejoin="round"
+					>
+						<polyline points="6 9 12 15 18 9"></polyline>
+					</svg>
+				</button>
+				<div 
+					class="overflow-hidden transition-all duration-200"
+					style="max-height: {isOpen ? 'var(--content-height)' : '0px'}; opacity: {isOpen ? '1' : '0'}"
+					
+				>
+					<div class="p-4">
+						<p>Accordion content goes here. You can add any content you want inside this div.</p>
+					</div>
+				</div>
+			</div>
+
+			<script>
+				let isOpen = false;
+				let contentHeight = 0;
+			</script>
+		</li>
+
+		<li>
+			<div class="relative p-4">
+				<div class="flex w-full items-center justify-between rounded-lg bg-neutral-800 p-4">
+					<div class="h-4 w-1/3 animate-pulse rounded bg-neutral-700"></div>
+					<div class="h-5 w-5 animate-pulse rounded bg-neutral-700"></div>
+				</div>
+				<div class="mt-2 p-4">
+					<div class="h-4 w-3/4 animate-pulse rounded bg-neutral-700"></div>
+					<div class="mt-2 h-4 w-1/2 animate-pulse rounded bg-neutral-700"></div>
+				</div>
 			</div>
 		</li>
 	</ul>

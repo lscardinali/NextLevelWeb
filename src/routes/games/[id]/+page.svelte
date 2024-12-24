@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Dropdown from '$lib/components/dropdown.svelte';
 	import { fly, slide } from 'svelte/transition';
 	import type { PageData } from './$types';
 
@@ -14,7 +13,7 @@
 	<div
 		in:fly={{ y: 40, duration: 300 }}
 		out:fly={{ y: 40, duration: 300 }}
-		class="fixed bottom-16 right-0 z-20 m-2 flex flex-row gap-2 rounded bg-pink-500 bg-opacity-80 p-4 backdrop-blur"
+		class="fixed bottom-16 right-0 z-20 m-2 flex flex-row gap-2 overflow-hidden rounded border-t border-rose-500 bg-black bg-opacity-30 p-4 backdrop-blur"
 	>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +46,7 @@
 	</div>
 {/if}
 
-<div class="relative h-44 w-full">
+<div class="relative mt-[-14px] h-44 w-full">
 	<img
 		src={data.gameInfo.header_image}
 		alt={data.gameInfo.name}
@@ -57,8 +56,8 @@
 	<h3 class="absolute bottom-4 left-4 text-3xl font-bold text-white">{data.gameInfo.name}</h3>
 </div>
 
-<div class="relative mt-8">
-	<a href="/games/2" class="flex flex-row items-center gap-2" aria-label="Home">
+<div class="relative ">
+	<a href="/games/2" class="flex flex-row items-center gap-2 m-2" aria-label="Home">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
@@ -90,13 +89,66 @@
 		</svg>
 	</a>
 
-	<p class="w-fit rounded-lg border border-white px-2 py-1 text-sm text-gray-300">Owned</p>
+	<p class="w-fit rounded-lg border border-white px-2 py-1 text-sm text-gray-300 m-2">Owned</p>
 
 	<div class="m-2 flex w-fit flex-col rounded-lg border border-white p-3">
 		<h2 class="text-2xl font-bold">2h 32m</h2>
 		<p class="text-sm text-gray-300">How Long To Beat?</p>
 	</div>
 
+	<div class="flex flex-row gap-2 m-2">
+	<div class="flex flex-row gap-2 rounded-lg border border-white p-2 items-center w-fit">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke-width="1.5"
+			stroke="currentColor"
+			class="h-6 w-6 text-white bg-green-500 rounded-full"
+		>
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				d="M4.5 12.75l6 6 9-13.5"
+			/>
+		</svg>
+		Verified
+	</div>
+	<div class="flex flex-row gap-2 rounded-lg border border-white p-2 items-center w-fit">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke-width="1.5"
+			stroke="currentColor"
+			class="h-6 w-6 text-white bg-yellow-500 rounded-full"
+		>
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				d="M4.5 12.75l6 6 9-13.5"
+			/>
+		</svg>
+		Playable
+	</div>
+	<div class="flex flex-row gap-2 rounded-lg border border-white p-2 items-center w-fit">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke-width="1.5"
+			stroke="currentColor"
+			class="h-6 w-6 text-white bg-gray-500 rounded-full"
+		>
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
+			/>
+		</svg>
+		Untested
+	</div>
+	</div>
 	<div class="relative m-2 flex h-24 w-24 items-center justify-center">
 		<svg class="h-full w-full -rotate-90">
 			<circle
@@ -127,23 +179,15 @@
 	</div>
 
 	<div
-		class="flex flex-row gap-4 overflow-x-auto pb-4 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-gray-800 [&::-webkit-scrollbar]:h-2"
+		class="flex flex-row gap-4 overflow-x-auto pb-4 snap-x snap-mandatory [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-gray-800 [&::-webkit-scrollbar]:h-2"
 	>
 		{#each data.gameInfo.screenshots as screenshot}
-			<div class="relative h-[200px] min-w-[350px] cursor-pointer">
+			<div class="relative h-[200px] min-w-[350px] cursor-pointer snap-center">
 				<img
 					src={screenshot.path_full}
 					alt="Game screenshot"
 					class="h-full w-full rounded-lg object-cover"
 				/>
-			</div>
-		{/each}
-
-		{#each data.gameInfo.movies || [] as movie}
-			<div class="relative h-[200px] min-w-[350px] cursor-pointer">
-				<video src={movie.mp4.max} controls class="h-full w-full rounded-lg object-cover">
-					<track kind="captions" />
-				</video>
 			</div>
 		{/each}
 	</div>

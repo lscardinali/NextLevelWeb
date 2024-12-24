@@ -3,7 +3,7 @@
 
 <h2 class="p-2 text-xl font-bold">Free Games</h2>
 <div
-	class="relative m-2 flex h-32 overflow-hidden rounded-xl bg-gradient-to-br from-green-950 to-green-700 p-4"
+	class="relative m-2 flex h-32 overflow-hidden rounded-xl bg-gradient-to-tl from-green-950 to-green-700 p-4"
 >
 	<img
 		class="absolute left-0 top-4 h-32"

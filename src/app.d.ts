@@ -4,8 +4,10 @@ declare global {
 	namespace App {
 		// interface Error {}
 		// interface Locals {}
-		// interface PageData {}
-		// interface PageState {}
+		//interface PageData {}
+		interface PageState {
+			showProfile?: boolean;
+		}
 		// interface Platform {}
 	}
 }
