@@ -56,8 +56,8 @@
 	<h3 class="absolute bottom-4 left-4 text-3xl font-bold text-white">{data.gameInfo.name}</h3>
 </div>
 
-<div class="relative ">
-	<a href="/games/2" class="flex flex-row items-center gap-2 m-2" aria-label="Home">
+<div class="relative">
+	<a href="/games/2" class="m-2 flex flex-row items-center gap-2" aria-label="Home">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
@@ -89,65 +89,57 @@
 		</svg>
 	</a>
 
-	<p class="w-fit rounded-lg border border-white px-2 py-1 text-sm text-gray-300 m-2">Owned</p>
+	<p class="m-2 w-fit rounded-lg border border-white px-2 py-1 text-sm text-gray-300">Owned</p>
 
 	<div class="m-2 flex w-fit flex-col rounded-lg border border-white p-3">
 		<h2 class="text-2xl font-bold">2h 32m</h2>
 		<p class="text-sm text-gray-300">How Long To Beat?</p>
 	</div>
 
-	<div class="flex flex-row gap-2 m-2">
-	<div class="flex flex-row gap-2 rounded-lg border border-white p-2 items-center w-fit">
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke-width="1.5"
-			stroke="currentColor"
-			class="h-6 w-6 text-white bg-green-500 rounded-full"
-		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				d="M4.5 12.75l6 6 9-13.5"
-			/>
-		</svg>
-		Verified
-	</div>
-	<div class="flex flex-row gap-2 rounded-lg border border-white p-2 items-center w-fit">
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke-width="1.5"
-			stroke="currentColor"
-			class="h-6 w-6 text-white bg-yellow-500 rounded-full"
-		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				d="M4.5 12.75l6 6 9-13.5"
-			/>
-		</svg>
-		Playable
-	</div>
-	<div class="flex flex-row gap-2 rounded-lg border border-white p-2 items-center w-fit">
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke-width="1.5"
-			stroke="currentColor"
-			class="h-6 w-6 text-white bg-gray-500 rounded-full"
-		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
-			/>
-		</svg>
-		Untested
-	</div>
+	<div class="m-2 flex flex-row gap-2">
+		<div class="flex w-fit flex-row items-center gap-2 rounded-lg border border-white p-1">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="h-4 w-4 rounded-full bg-green-500 text-white"
+			>
+				<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+			</svg>
+			<p class="text-sm">Verified</p>
+		</div>
+		<div class="flex w-fit flex-row items-center gap-2 rounded-lg border border-white p-1">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="h-6 w-6 rounded-full bg-yellow-500 text-white"
+			>
+				<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+			</svg>
+			<p class="text-sm">Playable</p>
+		</div>
+		<div class="flex w-fit flex-row items-center gap-2 rounded-lg border border-white p-1">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="h-6 w-6 rounded-full bg-gray-500 text-white"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
+				/>
+			</svg>
+			<p class="text-sm">Untested</p>
+		</div>
 	</div>
 	<div class="relative m-2 flex h-24 w-24 items-center justify-center">
 		<svg class="h-full w-full -rotate-90">
@@ -179,7 +171,7 @@
 	</div>
 
 	<div
-		class="flex flex-row gap-4 overflow-x-auto pb-4 snap-x snap-mandatory [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-gray-800 [&::-webkit-scrollbar]:h-2"
+		class="flex snap-x snap-mandatory flex-row gap-4 overflow-x-auto pb-4 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-gray-800 [&::-webkit-scrollbar]:h-2"
 	>
 		{#each data.gameInfo.screenshots as screenshot}
 			<div class="relative h-[200px] min-w-[350px] cursor-pointer snap-center">

@@ -77,15 +77,25 @@
 		}
 	];
 </script>
-<div class="flex flex-row mx-2 mt-2">
+
+<div class="mx-2 mt-2 flex flex-row">
 	<input
-	type="text"
-	placeholder="Search for a game"
-	class="flex-1 rounded-lg border border-neutral-600 bg-black p-1 mr-4"
-/>
-	<button class="text-rose-500 flex flex-row items-center gap-2">
-		<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M32 144h448M112 256h288M208 368h96"/></svg>
-	<p>Filter</p>
+		type="text"
+		placeholder="Search for a game"
+		class="mr-4 flex-1 rounded-lg border border-neutral-600 bg-black p-1"
+	/>
+	<button class="flex flex-row items-center gap-2 text-rose-500">
+		<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 512 512"
+			><path
+				fill="none"
+				stroke="currentColor"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="32"
+				d="M32 144h448M112 256h288M208 368h96"
+			/></svg
+		>
+		<p>Filter</p>
 	</button>
 </div>
 

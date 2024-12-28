@@ -1,4 +1,5 @@
 import typography from '@tailwindcss/typography';
+import safeArea from 'tailwindcss-safe-area';
 import type { Config } from 'tailwindcss';
 
 export default {
@@ -8,5 +9,5 @@ export default {
 		extend: {}
 	},
 
-	plugins: [typography]
+	plugins: [typography, safeArea]
 } satisfies Config;

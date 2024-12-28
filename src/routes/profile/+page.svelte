@@ -111,7 +111,7 @@
 			<div class="relative p-4">
 				<button 
 					class="flex items-center gap-2 rounded-lg bg-neutral-800 px-4 py-2 text-neutral-400 hover:bg-neutral-700 transition-colors"
-					on:click={() => {
+					onclick={() => {
 						const popover = document.getElementById('options-popover');
 						popover?.classList.toggle('opacity-0');
 						popover?.classList.toggle('pointer-events-none');
@@ -159,7 +159,7 @@
 						class="relative z-10 flex-1 rounded-md px-4 py-2 text-sm transition-colors"
 						class:text-white={selectedTab === 'first'}
 						class:text-neutral-400={selectedTab !== 'first'}
-						on:click={() => selectedTab = 'first'}
+						onclick={() => selectedTab = 'first'}
 					>
 						First Tab
 					</button>
@@ -167,7 +167,7 @@
 						class="relative z-10 flex-1 rounded-md px-4 py-2 text-sm transition-colors"
 						class:text-white={selectedTab === 'second'}
 						class:text-neutral-400={selectedTab !== 'second'}
-						on:click={() => selectedTab = 'second'}
+						onclick={() => selectedTab = 'second'}
 					>
 						Second Tab
 					</button>
@@ -183,7 +183,7 @@
 			<div class="relative p-4">
 				<button 
 					class="flex w-full items-center justify-between rounded-lg bg-neutral-800 p-4 text-left"
-					on:click={() => isOpen = !isOpen}
+					onclick={() => isOpen = !isOpen}
 				>
 					<span>Accordion Title</span>
 					<svg 
