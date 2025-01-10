@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 
 	let games = [
@@ -82,7 +81,7 @@
 	<input
 		type="text"
 		placeholder="Search for a game"
-		class="mr-4 flex-1 rounded-lg border border-neutral-600 bg-black p-1"
+		class="mr-4 flex-1 rounded-lg bg-neutral-800 px-2"
 	/>
 	<button class="flex flex-row items-center gap-2 text-rose-500">
 		<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 512 512"
@@ -101,12 +100,12 @@
 
 <div class="grid grid-cols-2 gap-2 p-2 md:grid-cols-3 lg:grid-cols-4">
 	{#each games as game, index (game)}
-		<a
-			in:fade={{ delay: index * 200 }}
-			href="/games/{game.gameId}"
-			class="flex flex-col gap-2 transition-all duration-300 hover:scale-105"
-		>
-			<img src={game.image} alt={game.name} class="w-full rounded object-cover" />
+		<a in:fade={{ delay: index * 200 }} href="/games/{game.gameId}" class="flex flex-col gap-2">
+			<img
+				src={game.image}
+				alt={game.name}
+				class="flex-1 rounded object-cover shadow-[0_0px_10px_0px_rgba(0,0,0,0.0)] transition-all hover:shadow-pink-600/90"
+			/>
 			<h3 class=" font-bold">{game.name}</h3>
 		</a>
 	{/each}

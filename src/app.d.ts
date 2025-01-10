@@ -7,6 +7,7 @@ declare global {
 		//interface PageData {}
 		interface PageState {
 			showProfile?: boolean;
+			showScreenshot?: boolean;
 		}
 		// interface Platform {}
 	}

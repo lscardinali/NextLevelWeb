@@ -1,13 +1,33 @@
 <script lang="ts">
-	import { fly, slide } from 'svelte/transition';
+	import { blur, fly, scale, slide } from 'svelte/transition';
 	import type { PageData } from './$types';
+	import { page } from '$app/state';
+	import { pushState } from '$app/navigation';
 
 	let { data }: { data: PageData } = $props();
 
 	console.log(data.gameInfo);
 
 	let showing = $state(true);
+
+	let detailScreenshot = $state(0);
 </script>
+
+{#if page.state.showScreenshot}
+	<button
+		onclick={() => history.back()}
+		transition:blur={{ duration: 300 }}
+		class="fixed bottom-0 left-0 right-0 top-0 z-20 bg-black bg-opacity-10 backdrop-blur"
+	>
+		<div class="fixed left-1/2 top-1/2 w-5/6 -translate-x-1/2 -translate-y-1/2">
+			<img
+				src={data.gameInfo.screenshots[detailScreenshot].path_full}
+				alt="Game screenshot"
+				class="h-full w-full object-contain"
+			/>
+		</div>
+	</button>
+{/if}
 
 {#if showing}
 	<div
@@ -46,7 +66,7 @@
 	</div>
 {/if}
 
-<div class="relative mt-[-14px] h-44 w-full">
+<div class="relative h-44 w-full overflow-hidden lg:mt-4 lg:rounded-lg">
 	<img
 		src={data.gameInfo.header_image}
 		alt={data.gameInfo.name}
@@ -57,40 +77,7 @@
 </div>
 
 <div class="relative">
-	<a href="/games/2" class="m-2 flex flex-row items-center gap-2" aria-label="Home">
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke-width="1.5"
-			stroke="currentColor"
-			class="h-6 w-6 transition-all duration-300 hover:opacity-50 active:opacity-30"
-		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-			/>
-		</svg>
-
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			fill="currentColor"
-			viewBox="0 0 24 24"
-			stroke-width="1.5"
-			stroke="currentColor"
-			class="h-6 w-6 text-rose-600 transition-all duration-300 hover:opacity-50 active:opacity-30"
-		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-			/>
-		</svg>
-	</a>
-
 	<p class="m-2 w-fit rounded-lg border border-white px-2 py-1 text-sm text-gray-300">Owned</p>
-
 	<div class="m-2 flex w-fit flex-col rounded-lg border border-white p-3">
 		<h2 class="text-2xl font-bold">2h 32m</h2>
 		<p class="text-sm text-gray-300">How Long To Beat?</p>
@@ -173,9 +160,13 @@
 	<div
 		class="flex snap-x snap-mandatory flex-row gap-4 overflow-x-auto pb-4 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-gray-800 [&::-webkit-scrollbar]:h-2"
 	>
-		{#each data.gameInfo.screenshots as screenshot}
+		{#each data.gameInfo.screenshots as screenshot, index}
 			<div class="relative h-[200px] min-w-[350px] cursor-pointer snap-center">
 				<img
+					onclick={() => {
+						detailScreenshot = index;
+						pushState('', { showScreenshot: true });
+					}}
 					src={screenshot.path_full}
 					alt="Game screenshot"
 					class="h-full w-full rounded-lg object-cover"

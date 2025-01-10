@@ -30,22 +30,7 @@
 	}
 </script>
 
-<!-- {#if page.state.showProfile}
-	<div
-		in:fly={{ y: 40, duration: 300 }}
-		out:fly={{ y: 40, duration: 300 }}
-		class="absolute bottom-0 left-0 right-0 top-0 z-20 bg-black bg-opacity-10 backdrop-blur"
-	>
-		<div class="absolute bottom-0 left-0 right-0 top-16 flex flex-col rounded-t-2xl bg-black">
-			<input
-				type="text"
-				bind:value={search}
-				placeholder="Search for a game"
-				class="m-4 rounded-2xl border border-neutral-600 bg-black p-2"
-			/>
-		</div>
-	</div>
-{/if} -->
+
 
 <div class="mx-4 flex flex-row mt-safe-or-4">
 	<div class="relative mr-2 flex-1">
