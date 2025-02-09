@@ -1,20 +1,22 @@
 <script lang="ts">
+	import type { GameSimple } from '$lib/models/game';
+	import Image from './image.svelte';
+
 	interface Props {
-		game: IGDBGame;
+		game: GameSimple;
 	}
 
 	let { game }: Props = $props();
 </script>
 
-<a href="/games/{game.id}" class="flex flex-col gap-2 transition-all duration-300 hover:scale-105">
-	{#if game.cover}
-		<img
-			src="https://images.igdb.com/igdb/image/upload/t_cover_big/{game.cover.image_id}.webp"
-			alt={game.name}
-			class="aspect-[2/3] w-full rounded bg-neutral-800 object-cover transition-all"
-		/>
-	{:else}
-		<div class="aspect-[2/3] w-full rounded bg-gray-500" />
-	{/if}
-	<h3 class=" line-clamp-2 h-12 overflow-ellipsis font-bold">{game.name}</h3>
+<a
+	href="/games/{game.id}"
+	class="flex flex-col gap-2 transition-all duration-300 hover:scale-105 hover:text-rose-400"
+>
+	<Image
+		src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{game.id}/header.jpg"
+		alt={game.name}
+		class=" w-full rounded transition-all"
+	/>
+	<h3 class=" line-clamp-2 h-12 font-bold overflow-ellipsis">{game.name}</h3>
 </a>

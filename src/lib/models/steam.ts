@@ -1,27 +1,22 @@
-
-
 interface SteamGame {
-    name: string;
-    header_image: string;
-    about_the_game: string;
-    movies: [SteamGameMovie];
-    screenshots: [SteamGameScreenshot];
-    is_free: boolean;
+	name: string;
+	header_image: string;
+	about_the_game: string;
+	background: string;
+	background_raw: string;
+	movies: [SteamGameMovie];
+	screenshots: [SteamGameScreenshot];
+	is_free: boolean;
 }
 
 interface SteamGameMovie {
-    mp4: SteamGameMovieResolution
+	webm: SteamGameMovieResolution;
 }
 
 interface SteamGameMovieResolution {
-    480: string;
-    max: string;
+	480: string;
 }
 
 interface SteamGameScreenshot {
-    path_full: string;
-}
-
-interface SteamGameResponse {
-    data: SteamGame;
+	path_full: string;
 }

@@ -3,23 +3,30 @@
 	import type { PageData } from './$types';
 	import { page } from '$app/state';
 	import { pushState } from '$app/navigation';
+	import IconXbox from '$lib/icons/IconXbox.svelte';
+	import SteamDeckCard from '$lib/components/game-details/steam-deck-card.svelte';
+	import IconSteamDeck from '$lib/icons/IconSteamDeck.svelte';
+	import Chart from '$lib/components/chart.svelte';
+	import Image from '$lib/components/image.svelte';
+	import StoresCard from '$lib/components/game-details/stores-card.svelte';
 
 	let { data }: { data: PageData } = $props();
 
-	console.log(data.gameInfo);
-
-	let showing = $state(true);
-
 	let detailScreenshot = $state(0);
+	let showDescription = $state(false);
 </script>
+
+<svelte:head>
+	<title>SECRETLEVEL - {data.gameInfo.name}</title>
+</svelte:head>
 
 {#if page.state.showScreenshot}
 	<button
 		onclick={() => history.back()}
 		transition:blur={{ duration: 300 }}
-		class="fixed bottom-0 left-0 right-0 top-0 z-20 bg-black bg-opacity-10 backdrop-blur"
+		class="bg-opacity-10 fixed top-0 right-0 bottom-0 left-0 z-20 bg-black backdrop-blur"
 	>
-		<div class="fixed left-1/2 top-1/2 w-5/6 -translate-x-1/2 -translate-y-1/2">
+		<div class="fixed top-1/2 left-1/2 w-5/6 -translate-x-1/2 -translate-y-1/2">
 			<img
 				src={data.gameInfo.screenshots[detailScreenshot].path_full}
 				alt="Game screenshot"
@@ -29,174 +36,98 @@
 	</button>
 {/if}
 
-{#if showing}
-	<div
-		in:fly={{ y: 40, duration: 300 }}
-		out:fly={{ y: 40, duration: 300 }}
-		class="fixed bottom-16 right-0 z-20 m-2 flex flex-row gap-2 overflow-hidden rounded border-t border-rose-500 bg-black bg-opacity-30 p-4 backdrop-blur"
-	>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke-width="1.5"
-			stroke="currentColor"
-			class="h-6 w-6"
-		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-			/>
-		</svg>
-		Game Added to Wishlist
-
-		<button onclick={() => (showing = false)}>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				class="h-6 w-6"
-			>
-				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-			</svg>
-		</button>
-	</div>
-{/if}
-
-<div class="relative h-44 w-full overflow-hidden lg:mt-4 lg:rounded-lg">
+<!-- <div class="absolute top-0 right-0 left-0 -z-10 h-screen">
 	<img
+		src={data.gameInfo.background_raw}
+		alt={data.gameInfo.name}
+		class="h-full w-full object-cover opacity-40 blur-3xl"
+	/>
+</div> -->
+
+<div class="relative h-64 w-full overflow-hidden lg:mt-4 lg:rounded-lg">
+	<!-- <img
 		src={data.gameInfo.header_image}
 		alt={data.gameInfo.name}
 		class="h-full w-full object-cover"
-	/>
+	/> -->
+	<video
+		src={data.gameInfo.movies[0].webm[480]}
+		class="h-full w-full object-cover"
+		autoplay
+		loop
+		muted
+		playsinline
+	></video>
 	<div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black to-transparent"></div>
 	<h3 class="absolute bottom-4 left-4 text-3xl font-bold text-white">{data.gameInfo.name}</h3>
 </div>
+<div class="mb-4 flex flex-col gap-4">
+	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+		<SteamDeckCard />
+		<StoresCard />
+	</div>
+	<div class="card flex flex-col gap-4 p-4">
+		<div class="flex flex-row items-center gap-2">
+			<IconSteamDeck class="h-6 w-6 text-blue-500" />
+			<p class="text-xl font-bold">Screenshots</p>
+		</div>
 
-<div class="relative">
-	<p class="m-2 w-fit rounded-lg border border-white px-2 py-1 text-sm text-gray-300">Owned</p>
-	<div class="m-2 flex w-fit flex-col rounded-lg border border-white p-3">
-		<h2 class="text-2xl font-bold">2h 32m</h2>
-		<p class="text-sm text-gray-300">How Long To Beat?</p>
+		<Chart />
 	</div>
 
-	<div class="m-2 flex flex-row gap-2">
-		<div class="flex w-fit flex-row items-center gap-2 rounded-lg border border-white p-1">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				class="h-4 w-4 rounded-full bg-green-500 text-white"
-			>
-				<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-			</svg>
-			<p class="text-sm">Verified</p>
+	<div class="card flex flex-col gap-4 p-4">
+		<div class="flex flex-row items-center gap-2">
+			<IconSteamDeck class="h-6 w-6 text-blue-500" />
+			<p class="text-xl font-bold">Screenshots</p>
 		</div>
-		<div class="flex w-fit flex-row items-center gap-2 rounded-lg border border-white p-1">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				class="h-6 w-6 rounded-full bg-yellow-500 text-white"
-			>
-				<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-			</svg>
-			<p class="text-sm">Playable</p>
-		</div>
-		<div class="flex w-fit flex-row items-center gap-2 rounded-lg border border-white p-1">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				class="h-6 w-6 rounded-full bg-gray-500 text-white"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
-				/>
-			</svg>
-			<p class="text-sm">Untested</p>
-		</div>
-	</div>
-	<div class="relative m-2 flex h-24 w-24 items-center justify-center">
-		<svg class="h-full w-full -rotate-90">
-			<circle
-				cx="48"
-				cy="48"
-				r="36"
-				stroke="rgb(100 100 100)"
-				stroke-width="8"
-				fill="transparent"
-				class="opacity-25"
-			/>
-			<circle
-				cx="48"
-				cy="48"
-				r="36"
-				stroke="#22c55e"
-				stroke-width="8"
-				fill="transparent"
-				stroke-dasharray="226"
-				stroke-dashoffset="56"
-				class="transition-all duration-1000"
-			/>
-		</svg>
-		<div class="absolute flex flex-col items-center">
-			<span class="text-2xl font-bold">75</span>
-			<span class="text-xs text-gray-400">Score</span>
+
+		<div
+			class="[&::-webkit-scrollbar-track]:transparent flex snap-x snap-mandatory flex-row gap-4 overflow-x-auto pb-4 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-black/80 [&::-webkit-scrollbar-track]:rounded-full"
+		>
+			{#each data.gameInfo.screenshots as screenshot, index}
+				<div class="relative h-[200px] min-w-[350px] cursor-pointer snap-center">
+					<button
+						onclick={() => {
+							detailScreenshot = index;
+							pushState('', { showScreenshot: true });
+						}}
+					>
+						<Image
+							src={screenshot.path_full}
+							alt="Game screenshot"
+							class="h-full w-full rounded-xl object-cover"
+						/>
+					</button>
+				</div>
+			{/each}
 		</div>
 	</div>
 
 	<div
-		class="flex snap-x snap-mandatory flex-row gap-4 overflow-x-auto pb-4 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-gray-800 [&::-webkit-scrollbar]:h-2"
+		class="relative flex {showDescription
+			? 'h-fit'
+			: 'h-64'} flex-col gap-4 overflow-hidden rounded-2xl bg-neutral-900 p-4 transition-all"
 	>
-		{#each data.gameInfo.screenshots as screenshot, index}
-			<div class="relative h-[200px] min-w-[350px] cursor-pointer snap-center">
-				<img
-					onclick={() => {
-						detailScreenshot = index;
-						pushState('', { showScreenshot: true });
-					}}
-					src={screenshot.path_full}
-					alt="Game screenshot"
-					class="h-full w-full rounded-lg object-cover"
-				/>
-			</div>
-		{/each}
+		<div class="flex flex-row items-center gap-2">
+			<IconSteamDeck class="h-6 w-6 text-blue-500" />
+			<p class="text-xl font-bold">Description</p>
+		</div>
+
+		<div class="max-w-[640px] text-sm text-neutral-300">
+			{@html data.gameInfo.about_the_game}
+		</div>
+		{#if !showDescription}
+			<div
+				class="absolute right-0 bottom-0 left-0 h-32 bg-gradient-to-t from-neutral-900 to-transparent"
+			></div>
+		{/if}
+		<button
+			onclick={() => {
+				showDescription = !showDescription;
+			}}
+			class="absolute right-4 bottom-4 rounded-xl bg-lime-600 p-2 text-sm font-bold text-lime-400"
+		>
+			{showDescription ? 'Hide' : 'More'}
+		</button>
 	</div>
-</div>
-<div class="flex flex-row gap-2 p-4">
-	<button
-		onclick={() => (showing = true)}
-		class="w-fit rounded-lg bg-gradient-to-br from-green-500 to-green-700 p-2 text-green-200 shadow-lg transition-all duration-300 hover:shadow-[#22c55e88]"
-	>
-		23,00€
-		<p class="text-xs">AllKeyShop</p>
-	</button>
-
-	<button class="w-fit rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 p-2 text-blue-200">
-		32,00€
-		<p class="text-xs">Playstation</p>
-	</button>
-
-	<button
-		class="w-fit rounded-lg bg-gradient-to-br from-purple-500 to-purple-700 p-2 text-blue-200"
-	>
-		32,00€
-		<p class="text-xs">Steam</p>
-	</button>
-</div>
-<div class=" p-4">
-	<h2 class="text-2xl font-bold">Description</h2>
-	<p class="">{@html data.gameInfo.about_the_game}</p>
 </div>

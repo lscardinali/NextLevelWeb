@@ -1,6 +1,6 @@
 {
-    "short_name": "NextLevel",
-    "name": "NextLevel",
+    "short_name": "SecretLevel",
+    "name": "Secret Level",
     "description": "Manage and explore your game library with NextLevel, your ultimate game hub.",
     "icons": [
       {
@@ -10,7 +10,7 @@
         "purpose": "any maskable"
       }
     ],
-    "id": "/nextlevel",
+    "id": "/secretlevel",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#000",
@@ -21,15 +21,15 @@
     "related_applications": [
       {
         "platform": "webapp",
-        "url": "https://www.nextlevel.app",
-        "id": "https://www.nextlevel.app"
+        "url": "https://secretlevel.app",
+        "id": "https://secretlevel.app"
       }
     ],
     "prefer_related_applications": false,
     "apple": {
       "apple-mobile-web-app-capable": "yes",
       "apple-mobile-web-app-status-bar-style": "black",
-      "apple-mobile-web-app-title": "NextLevel",
+      "apple-mobile-web-app-title": "Secret Level",
       "icons": [
         {
           "src": "/icon.png",

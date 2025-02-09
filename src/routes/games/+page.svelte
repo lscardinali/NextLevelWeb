@@ -75,27 +75,35 @@
 			image: 'https://cdn.akamai.steamstatic.com/steam/apps/489830/header.jpg'
 		}
 	];
+
+	let isSearching = $state(false);
 </script>
 
 <div class="mx-2 mt-2 flex flex-row">
-	<input
-		type="text"
-		placeholder="Search for a game"
-		class="mr-4 flex-1 rounded-lg bg-neutral-800 px-2"
-	/>
-	<button class="flex flex-row items-center gap-2 text-rose-500">
-		<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 512 512"
-			><path
+	<div class="mr-4 flex flex-row rounded-lg bg-neutral-800 px-2 py-2">
+		<button onclick={(e) => (isSearching = true)}>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
 				stroke="currentColor"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				stroke-width="32"
-				d="M32 144h448M112 256h288M208 368h96"
-			/></svg
-		>
-		<p>Filter</p>
-	</button>
+				class="h-6 w-6 text-neutral-400"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+				/>
+			</svg>
+		</button>
+		<input
+			onblur={(e) => (isSearching = false)}
+			type="text"
+			placeholder="Search for a game"
+			class="bg-transparent px-2 {isSearching ? 'block' : 'hidden w-0'} transition-all"
+		/>
+	</div>
 </div>
 
 <div class="grid grid-cols-2 gap-2 p-2 md:grid-cols-3 lg:grid-cols-4">
