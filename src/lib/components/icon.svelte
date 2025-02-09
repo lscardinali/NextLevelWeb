@@ -1,25 +1,19 @@
 <script lang="ts">
+	export type IconName = 'hub' | 'games' | 'search' | 'deals' | 'account';
+
 	interface IconProps {
-		icon: string;
+		icon: IconName;
+		class?: string;
 	}
 
-	let { icon }: IconProps = $props();
+	let { icon, class: className = 'h-6 w-6' }: IconProps = $props();
 </script>
 
-{#if icon === 'home'}
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		fill="none"
-		viewBox="0 0 24 24"
-		stroke-width="1.5"
-		stroke="currentColor"
-		class="h-6 w-6"
-	>
-		<path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+{#if icon === 'hub'}
+	<svg xmlns="http://www.w3.org/2000/svg" class={className} viewBox="0 0 24 24">
 		<path
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z"
+			fill="currentColor"
+			d="M4.616 20q-.691 0-1.153-.462T3 18.384V5.616q0-.691.463-1.153T4.615 4h14.77q.69 0 1.152.463T21 5.616v12.769q0 .69-.463 1.153T19.385 20zm2.653-3.77h9.462q.212 0 .356-.143q.144-.144.144-.357t-.144-.356t-.356-.143H7.269q-.212 0-.356.144t-.144.357t.144.356t.356.143m0-3.731h2.385q.212 0 .356-.144t.144-.356V8.27q0-.213-.144-.357t-.356-.144H7.269q-.212 0-.356.144t-.144.356V12q0 .213.144.356t.356.144m5.77 0h3.692q.212 0 .356-.144t.144-.357t-.144-.356t-.356-.143h-3.693q-.212 0-.356.144t-.144.357t.144.356t.356.143m0-3.73h3.693q.212 0 .356-.145t.144-.357t-.144-.356t-.356-.143h-3.693q-.212 0-.356.144t-.144.357t.144.356t.356.143"
 		/>
 	</svg>
 {:else if icon === 'games'}

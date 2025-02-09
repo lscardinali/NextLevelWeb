@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="flex flex-row items-center gap-2">
-		<div class="flex w-fit flex-row items-center gap-2 rounded-lg bg-neutral-800 p-2">
+		<div class="flex w-fit flex-row items-center gap-2  p-2">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				fill="none"
@@ -22,18 +22,18 @@
 			>
 				<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
 			</svg>
-			<p class="text-sm">Verified</p>
+			<p class="font-bold">Verified</p>
 		</div>
 
 		<div class="flex flex-row items-center gap-2">
-			<div class="flex w-fit flex-col items-center rounded-lg bg-neutral-800 p-2">
+			<div class="flex w-fit flex-row items-center p-2">
 				<p class="font-bold text-blue-400">Platinum</p>
-				<p class="text-sm">ProtonDB Rating</p>
+				<p class="text-sm">ProtonDB</p>
 			</div>
 		</div>
 
 		<div class="flex flex-row items-center gap-2">
-			<div class="flex w-fit flex-row items-center gap-2 rounded-lg bg-neutral-800 p-2">
+			<div class="flex w-fit flex-row items-center gap-2  p-2">
 				<IconBattery class="size-8 text-green-400" />
 				<p class="font-bold">3:24</p>
 			</div>

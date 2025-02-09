@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@plugin 'tailwindcss-safe-area';
+@plugin '@tailwindcss/typography';
 
 body {
 	color: #fff;

@@ -7,6 +7,7 @@ interface SteamGame {
 	movies: [SteamGameMovie];
 	screenshots: [SteamGameScreenshot];
 	is_free: boolean;
+	steam_appid: number;
 }
 
 interface SteamGameMovie {

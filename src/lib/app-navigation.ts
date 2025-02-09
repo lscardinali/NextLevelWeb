@@ -1,17 +1,19 @@
+import type { IconName } from '$lib/components/icon.svelte';
+
 interface NavigationItem {
 	name: string;
 	href: string;
-	icon: string;
+	icon: IconName;
 }
 
 export const appNavigation: NavigationItem[] = [
 	{
 		name: 'Hub',
 		href: '/hub',
-		icon: 'home'
+		icon: 'hub'
 	},
 	{
-		name: 'Games',
+		name: 'My Games',
 		href: '/games',
 		icon: 'games'
 	},
@@ -23,11 +25,11 @@ export const appNavigation: NavigationItem[] = [
 	{
 		name: 'Deals',
 		href: '/deals',
-		icon: 'home'
+		icon: 'deals'
 	},
 	{
-		name: 'Wishlist',
-		href: '/wishlist',
-		icon: 'home'
+		name: 'Account',
+		href: '/account',
+		icon: 'account'
 	}
 ];

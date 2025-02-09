@@ -16,8 +16,7 @@
 	}
 </script>
 
-<Header />
-<div class="mx-4 flex flex-row items-center gap-4">
+<div class="mt-safe-or-4 m-4 flex flex-row items-center gap-4">
 	<span class="flex-1">
 		<SearchBar bind:value={search} onSearch={searchGames} />
 	</span>
@@ -29,21 +28,7 @@
 	</select>
 </div>
 {#if games.length == 0}
-	<div class="flex h-full flex-1 flex-col items-center justify-center">
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke-width="1.5"
-			stroke="currentColor"
-			class=" mb-4 h-18 w-18 text-neutral-400"
-		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-			/>
-		</svg>
+	<div class="flex flex-1 flex-col items-center justify-center">
 		<p class="text-xl font-bold">Start searching for games</p>
 		<p class="text-sm text-neutral-400">Search for games by name, genre, platform, or developer.</p>
 	</div>

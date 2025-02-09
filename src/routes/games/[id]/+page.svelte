@@ -3,12 +3,12 @@
 	import type { PageData } from './$types';
 	import { page } from '$app/state';
 	import { pushState } from '$app/navigation';
-	import IconXbox from '$lib/icons/IconXbox.svelte';
 	import SteamDeckCard from '$lib/components/game-details/steam-deck-card.svelte';
 	import IconSteamDeck from '$lib/icons/IconSteamDeck.svelte';
 	import Chart from '$lib/components/chart.svelte';
 	import Image from '$lib/components/image.svelte';
 	import StoresCard from '$lib/components/game-details/stores-card.svelte';
+	import * as m from '$lib/paraglide/messages.js';
 
 	let { data }: { data: PageData } = $props();
 
@@ -62,6 +62,14 @@
 	<h3 class="absolute bottom-4 left-4 text-3xl font-bold text-white">{data.gameInfo.name}</h3>
 </div>
 <div class="mb-4 flex flex-col gap-4">
+	<a
+		href="steam://store/{data.gameInfo.steam_appid}"
+		class="flex w-fit flex-row items-center gap-2 rounded-md bg-gradient-to-r from-blue-800 to-blue-600 p-2 text-white transition-all hover:shadow-lg hover:shadow-blue-800"
+	>
+		<IconSteamDeck class="h-6 w-6 text-white" />
+		Open in Steam
+	</a>
+
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 		<SteamDeckCard />
 		<StoresCard />
@@ -69,18 +77,13 @@
 	<div class="card flex flex-col gap-4 p-4">
 		<div class="flex flex-row items-center gap-2">
 			<IconSteamDeck class="h-6 w-6 text-blue-500" />
-			<p class="text-xl font-bold">Screenshots</p>
+			<p class="text-xl font-bold">{m.screenshots()}</p>
 		</div>
 
 		<Chart />
 	</div>
 
-	<div class="card flex flex-col gap-4 p-4">
-		<div class="flex flex-row items-center gap-2">
-			<IconSteamDeck class="h-6 w-6 text-blue-500" />
-			<p class="text-xl font-bold">Screenshots</p>
-		</div>
-
+	<div class="card flex flex-col">
 		<div
 			class="[&::-webkit-scrollbar-track]:transparent flex snap-x snap-mandatory flex-row gap-4 overflow-x-auto pb-4 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-black/80 [&::-webkit-scrollbar-track]:rounded-full"
 		>
