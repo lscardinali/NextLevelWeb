@@ -5,10 +5,13 @@
 	import IconXbox from '$lib/icons/IconXbox.svelte';
 	import type { GameSimple } from '$lib/models/game';
 	import { blur, fade, fly, scale, slide } from 'svelte/transition';
+	import type { PageData } from './$types';
 
 	let search = $state('');
 
 	let games = $state<GameSimple[]>([]);
+
+	let { data }: { data: PageData } = $props();
 
 	async function searchGames() {
 		const response = await fetch(`/api/search/steam?name=${search}`);

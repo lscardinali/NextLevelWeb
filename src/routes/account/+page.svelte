@@ -9,8 +9,22 @@
 	<div class="card flex w-fit flex-col gap-4 p-4">
 		{#if data.user}
 			<p>Logged in as {data.user.username}</p>
+
+			{#if data.userInfo?.steamId}
+				<p>Steam ID: {data.userInfo.steamId}</p>
+			{:else}
+				<form method="post" action="?/linksteam" use:enhance>
+					<input
+						type="text"
+						name="steamid"
+						class="rounded-md bg-neutral-800 px-4 py-2 text-white"
+					/>
+
+					<button class="rounded-md bg-neutral-800 px-4 py-2 text-white">Link Steam Account</button>
+				</form>
+			{/if}
 			<form method="post" action="?/logout" use:enhance>
-				<button>Sign out</button>
+				<button class="rounded-md bg-red-800 px-4 py-2 text-white">Sign out</button>
 			</form>
 		{:else}
 			<p>Login with Google</p>

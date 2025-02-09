@@ -62,14 +62,22 @@
 	<h3 class="absolute bottom-4 left-4 text-3xl font-bold text-white">{data.gameInfo.name}</h3>
 </div>
 <div class="mb-4 flex flex-col gap-4">
-	<a
-		href="steam://store/{data.gameInfo.steam_appid}"
-		class="flex w-fit flex-row items-center gap-2 rounded-md bg-gradient-to-r from-blue-800 to-blue-600 p-2 text-white transition-all hover:shadow-lg hover:shadow-blue-800"
-	>
-		<IconSteamDeck class="h-6 w-6 text-white" />
-		Open in Steam
-	</a>
-
+	<div class="flex flex-row items-center gap-2">
+		<a
+			href="steam://store/{data.gameInfo.steam_appid}"
+			class="flex w-fit flex-row items-center gap-2 rounded-md bg-gradient-to-r from-blue-800 to-blue-600 p-2 text-white transition-all hover:shadow-lg hover:shadow-blue-800"
+		>
+			<IconSteamDeck class="h-6 w-6 text-white" />
+			Open in Steam
+		</a>
+		{#if data.owned}
+			<div
+				class="flex w-fit flex-row items-center gap-2 rounded-md bg-gradient-to-r from-green-800 to-green-600 p-2 text-white transition-all"
+			>
+				Owned
+			</div>
+		{/if}
+	</div>
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 		<SteamDeckCard />
 		<StoresCard />
