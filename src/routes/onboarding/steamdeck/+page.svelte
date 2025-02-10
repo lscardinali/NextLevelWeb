@@ -3,7 +3,6 @@
 
 <div class="flex flex-col justify-center gap-4 p-4">
 	<h2 class="text-2xl font-bold">Do you own a Steam Deck?</h2>
-	<img src="https://i.redd.it/09s8h9ccq73a1.gif" />
 	<p class="text-sm text-neutral-400">
 		If you own a Steam Deck we'll also show relevant information like if a game is verified and
 		other stuff.
