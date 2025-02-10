@@ -92,9 +92,7 @@
 	</div>
 
 	<div class="card flex flex-col">
-		<div
-			class="[&::-webkit-scrollbar-track]:transparent flex snap-x snap-mandatory flex-row gap-4 overflow-x-auto pb-4 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-black/80 [&::-webkit-scrollbar-track]:rounded-full"
-		>
+		<div class=" flex snap-x snap-mandatory flex-row gap-4 overflow-x-auto pb-4">
 			{#each data.gameInfo.screenshots as screenshot, index}
 				<div class="relative h-[200px] min-w-[350px] cursor-pointer snap-center">
 					<button
