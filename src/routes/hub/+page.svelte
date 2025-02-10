@@ -2,12 +2,15 @@
 	import HumbleBundleSection from '$lib/components/hub/humble-bundle-section.svelte';
 	import IconEpicGameStore from '$lib/icons/IconEpicGameStore.svelte';
 	import IconGame from '$lib/icons/IconGame.svelte';
-	import IconHumbleBundle from '$lib/icons/IconHumbleBundle.svelte';
 	import IconPlaystation from '$lib/icons/IconPlaystation.svelte';
 	import IconXbox from '$lib/icons/IconXbox.svelte';
 	import type { PageData } from './$types';
 	let { data }: { data: PageData } = $props();
 </script>
+
+<svelte:head>
+	<title>Secret Level - Hub</title>
+</svelte:head>
 
 <div class="flex flex-col">
 	<div class="mt-safe-offset-2 mx-2 flex flex-row items-center gap-2">

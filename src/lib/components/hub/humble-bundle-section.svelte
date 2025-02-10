@@ -46,8 +46,8 @@
 				class="relative m-1 flex h-32 overflow-hidden rounded-xl transition-all hover:scale-105"
 			>
 				<img class="absolute h-full w-full object-cover" alt="Humble Bundle" src={bundle.image} />
-				<div class="absolute h-full w-full bg-black/50"></div>
-				<h1 class="absolute top-2 left-2 rounded-md bg-black/50 p-2 text-xs">
+				<div class="absolute h-full w-full bg-gradient-to-t from-black/50 to-transparent"></div>
+				<h1 class="absolute top-2 left-2 rounded-md bg-black/50 p-2 text-xs backdrop-blur-xl">
 					{getRemainingTime(bundle.endDate)}
 				</h1>
 				<h1 class="absolute bottom-2 left-2 font-bold">
