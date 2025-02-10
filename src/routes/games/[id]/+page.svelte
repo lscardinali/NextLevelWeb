@@ -64,7 +64,7 @@
 <div class="mb-4 flex flex-col gap-4">
 	<div class="flex flex-row items-center gap-2">
 		<a
-			href="steam://store/{data.gameInfo.steam_appid}"
+			href="steam://run/{data.gameInfo.steam_appid}"
 			class="flex w-fit flex-row items-center gap-2 rounded-md bg-gradient-to-r from-blue-800 to-blue-600 p-2 text-white transition-all hover:shadow-lg hover:shadow-blue-800"
 		>
 			<IconSteamDeck class="h-6 w-6 text-white" />

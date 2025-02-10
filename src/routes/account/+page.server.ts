@@ -1,31 +1,25 @@
-import { fail } from '@sveltejs/kit';
-import { redirect } from '@sveltejs/kit';
-import type { Actions, PageServerLoad } from './$types';
-import * as auth from '$lib/server/auth';
+import { fail, redirect } from '@sveltejs/kit';
+import type { Actions } from './$types';
 import { db } from '$lib/server/db';
 import { user } from '$lib/server/db/schema';
 import { eq } from 'drizzle-orm';
-
-export const load: PageServerLoad = async (event) => {
-	if (event.locals.user) {
-		const userInfo = await db.query.user.findFirst({
-			where: eq(user.id, event.locals.user.id)
-		});
-		return { user: event.locals.user, userInfo: userInfo };
-	}
-
-	return { user: event.locals.user };
-};
+import { Resend } from 'resend';
+import { RESEND_API_KEY } from '$env/static/private';
+import * as auth from '$lib/server/auth';
 
 export const actions: Actions = {
-	logout: async (event) => {
-		if (!event.locals.session) {
-			return fail(401);
-		}
-		await auth.invalidateSession(event.locals.session.id);
-		auth.deleteSessionTokenCookie(event);
+	sendtestemail: async () => {
+		const resend = new Resend(RESEND_API_KEY);
 
-		return redirect(302, '/account');
+		resend.emails.send({
+			from: 'onboarding@resend.dev',
+			to: 'lucascardinali92@gmail.com',
+			subject: 'Welcome!',
+			html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
+		});
+
+		console.log('Email sent');
+		return { success: true };
 	},
 	linksteam: async (event) => {
 		const formData = await event.request.formData();
@@ -47,5 +41,14 @@ export const actions: Actions = {
 		await db.update(user).set({ steamId: steamid }).where(eq(user.id, event.locals.user.id));
 
 		return { success: true };
+	},
+	logout: async (event) => {
+		if (!event.locals.session) {
+			return fail(401);
+		}
+		await auth.invalidateSession(event.locals.session.id);
+		auth.deleteSessionTokenCookie(event);
+
+		return redirect(302, '/account');
 	}
 };
