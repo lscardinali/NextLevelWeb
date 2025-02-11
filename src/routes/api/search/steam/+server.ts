@@ -25,7 +25,9 @@ export async function GET(event: RequestEvent) {
 				console.log(aTag.querySelector('.title')?.textContent);
 				return {
 					id: aTag.getAttribute('data-ds-appid'),
-					name: aTag.querySelector('.title')?.textContent
+					name: aTag.querySelector('.title')?.textContent,
+					image: `https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/${aTag.getAttribute('data-ds-appid')}/library_600x900.jpg`,
+					logo: `https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/${aTag.getAttribute('data-ds-appid')}/logo.png`
 				} as GameSimple;
 			} else {
 				return undefined;

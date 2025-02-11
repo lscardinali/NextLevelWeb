@@ -5,7 +5,6 @@
 	import Icon from '$lib/components/icon.svelte';
 	import '../app.css';
 	import { appNavigation } from '$lib/app-navigation';
-	import IconXbox from '$lib/icons/IconXbox.svelte';
 
 	let { children } = $props();
 </script>
@@ -27,16 +26,73 @@
 									item.href
 								)
 									? 'bg-opacity-10 bg-neutral-900 text-[#f31260]'
-									: 'text-neutral-500'} hover:bg-opacity-20 transition-all hover:bg-neutral-900"
+									: 'text-neutral-500'} hover:bg-opacity-20 transition-all duration-300 hover:bg-neutral-900"
 							>
 								<Icon icon={item.icon} />
 								{item.name}
 							</a>
 						</li>
 					{/each}
-
-					<div class="my-4 h-[1px] w-full bg-neutral-700"></div>
-					<li class="text-sm font-bold text-neutral-500">Popular Games</li>
+				</ul>
+				<div class="my-4 h-[1px] w-full bg-neutral-700"></div>
+				<div class="text-sm font-bold text-neutral-500">Popular Games</div>
+				<ul class="mt-2 flex flex-col gap-2">
+					<li class="flex flex-row items-center justify-between gap-2 text-pink-500">
+						<a href="/games/730">Counter-Strike 2</a>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg
+						>
+					</li>
+					<li class="flex flex-row items-center justify-between gap-2 text-pink-500">
+						<a href="/games/1771300">Kingdom Come: Deliverance II</a>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg
+						>
+					</li>
+					<li class="flex flex-row items-center justify-between gap-2 text-pink-500">
+						<a href="/games/123">Path of Exile 2</a>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg
+						>
+					</li>
+					<li class="flex flex-row items-center justify-between gap-2 text-pink-500">
+						<a href="/games/123">Monster Hunter Wilds</a>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg
+						>
+					</li>
 				</ul>
 			</aside>
 			<main class="w-full pb-12 md:pb-0 xl:mx-auto xl:max-w-[1024px]">
@@ -44,7 +100,7 @@
 			</main>
 		</div>
 		<nav
-			class="pb-safe-or-2 fixed right-0 bottom-0 left-0 z-10 flex flex-row items-center justify-around bg-black/50 py-2 backdrop-blur-xl md:hidden"
+			class="pb-safe-or-2 fixed right-0 bottom-0 left-0 z-10 flex flex-row items-center justify-around bg-black/70 py-2 backdrop-blur-xl md:hidden"
 		>
 			{#each appNavigation as item}
 				<a

@@ -33,6 +33,15 @@ export const ownedGames = pgTable('owned_games', {
 		.references(() => user.id)
 });
 
+export const favoriteGames = pgTable('favorite_games', {
+	id: serial().primaryKey(),
+	gameId: text('game_id').notNull(),
+	platform: text('platform').notNull(),
+	userId: text('user_id')
+		.notNull()
+		.references(() => user.id)
+});
+
 export type ViewedGame = typeof viewedGames.$inferSelect;
 
 export type Session = typeof session.$inferSelect;
@@ -40,3 +49,5 @@ export type Session = typeof session.$inferSelect;
 export type User = typeof user.$inferSelect;
 
 export type OwnedGame = typeof ownedGames.$inferSelect;
+
+export type FavoriteGame = typeof favoriteGames.$inferSelect;

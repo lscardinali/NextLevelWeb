@@ -12,19 +12,19 @@
 	<title>Secret Level - Hub</title>
 </svelte:head>
 
-<div class="flex flex-col">
-	<div class="mt-safe-offset-2 mx-2 flex flex-row items-center gap-2">
+<div class="flex flex-col p-2">
+	<div class="mt-safe-offset-2 flex flex-row items-center gap-2">
 		<span class="text-red-500">
 			<IconGame />
 		</span>
 		<h2 class=" text-xl font-bold">Free Games</h2>
 	</div>
-	<div class="mx-2 my-2 grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+	<div class="my-2 grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
 		<a
 			href="/hub/subscriptions"
-			class="flex h-20 flex-row items-center justify-evenly gap-2 rounded-xl bg-gradient-to-tr from-green-950 to-green-700 p-4 transition-all active:opacity-50"
+			class="flex h-20 flex-row items-center justify-evenly gap-2 rounded-xl bg-gradient-to-tl from-green-950 to-green-700 p-4 transition-all active:opacity-50"
 		>
-			<IconXbox />
+			<IconXbox class="size-12" />
 			<h1 class=" text-lg font-bold">Game Pass</h1>
 		</a>
 

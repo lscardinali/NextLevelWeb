@@ -9,6 +9,8 @@
 	import Image from '$lib/components/image.svelte';
 	import StoresCard from '$lib/components/game-details/stores-card.svelte';
 	import * as m from '$lib/paraglide/messages.js';
+	import IconHeart from '$lib/icons/IconHeart.svelte';
+	import { enhance } from '$app/forms';
 
 	let { data }: { data: PageData } = $props();
 
@@ -58,25 +60,41 @@
 		muted
 		playsinline
 	></video>
-	<div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black to-transparent"></div>
+	<div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black to-transparent"></div>
+
 	<h3 class="absolute bottom-4 left-4 text-3xl font-bold text-white">{data.gameInfo.name}</h3>
 </div>
-<div class="mb-4 flex flex-col gap-4">
-	<div class="flex flex-row items-center gap-2">
-		<a
-			href="steam://run/{data.gameInfo.steam_appid}"
-			class="flex w-fit flex-row items-center gap-2 rounded-md bg-gradient-to-r from-blue-800 to-blue-600 p-2 text-white transition-all hover:shadow-lg hover:shadow-blue-800"
-		>
-			<IconSteamDeck class="h-6 w-6 text-white" />
-			Open in Steam
-		</a>
-		{#if data.owned}
-			<div
-				class="flex w-fit flex-row items-center gap-2 rounded-md bg-gradient-to-r from-green-800 to-green-600 p-2 text-white transition-all"
+<div class="m-2 flex flex-col gap-4 md:m-4">
+	<div class="flex flex-row items-center justify-between gap-2">
+		<div class="flex flex-row items-center gap-2">
+			<a
+				href="steam://run/{data.gameInfo.steam_appid}"
+				class="flex w-fit flex-row items-center gap-2 rounded-md bg-gradient-to-r from-blue-800 to-blue-600 p-2 text-white transition-all hover:shadow-lg hover:shadow-blue-800"
 			>
-				Owned
-			</div>
-		{/if}
+				<IconSteamDeck class="h-6 w-6 text-white" />
+				Open in Steam
+			</a>
+			{#if data.owned}
+				<div
+					class="flex w-fit flex-row items-center gap-2 rounded-md bg-gradient-to-r from-green-800 to-green-600 p-2 text-white transition-all"
+				>
+					Owned
+				</div>
+			{/if}
+		</div>
+
+		{#await data.favorite}
+			<div />
+		{:then favorite}
+			<form method="post" action="?/favorite" use:enhance>
+				<button
+					class="flex w-fit cursor-pointer flex-row items-center gap-1 rounded-md bg-gradient-to-r from-pink-800 to-pink-600 p-2 text-white transition-all hover:shadow-lg hover:shadow-pink-800"
+				>
+					<IconHeart class="size-6 text-white" />
+					{favorite ? 'Remove from Favorites' : 'Add to Favorites'}
+				</button>
+			</form>
+		{/await}
 	</div>
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 		<SteamDeckCard />
