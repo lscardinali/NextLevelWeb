@@ -27,12 +27,16 @@ export async function getAllGamePassGameIDs() {
 
 	const data = await response.json();
 
-	const gameIdArray = data.map((product: any) => product.id).filter(Boolean);
+	const gameIdArray = data.map((product: { id: string }) => product.id).filter(Boolean);
 
 	return gameIdArray;
 }
 
-export async function getGamePassGamesInfo(gameIds: string[], page: number, pageSize: number = 400) {
+export async function getGamePassGamesInfo(
+	gameIds: string[],
+	page: number,
+	pageSize: number = 400
+) {
 	const start = page * pageSize;
 	const end = start + pageSize;
 	const pageIds = gameIds.slice(start, end);
@@ -57,8 +61,8 @@ export async function getGamePassGamesInfo(gameIds: string[], page: number, page
 	const allGames = await response.json();
 
 	try {
-		let response = allGames.Products.map((product: any) => {
-			let localizedProperties = product.LocalizedProperties[0];
+		const response = allGames.Products.map((product: any) => {
+			const localizedProperties = product.LocalizedProperties[0];
 
 			return {
 				id: product.ProductId,

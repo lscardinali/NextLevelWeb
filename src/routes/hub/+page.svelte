@@ -5,6 +5,7 @@
 	import IconPlaystation from '$lib/icons/IconPlaystation.svelte';
 	import IconXbox from '$lib/icons/IconXbox.svelte';
 	import type { PageData } from './$types';
+	import { fade } from 'svelte/transition';
 	let { data }: { data: PageData } = $props();
 </script>
 
@@ -12,7 +13,7 @@
 	<title>Secret Level - Hub</title>
 </svelte:head>
 
-<div class="flex flex-col p-2">
+<div class="flex flex-col p-2" in:fade={{ duration: 150 }}>
 	<div class="mt-safe-offset-2 flex flex-row items-center gap-2">
 		<span class="text-red-500">
 			<IconGame />

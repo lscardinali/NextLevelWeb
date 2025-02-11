@@ -7,6 +7,18 @@ import { Resend } from 'resend';
 import { RESEND_API_KEY } from '$env/static/private';
 import * as auth from '$lib/server/auth';
 
+import type { PageServerLoad } from './$types';
+
+export const load: PageServerLoad = async ({ locals }) => {
+	if (!locals.user) {
+		throw redirect(302, '/account/signin');
+	}
+
+	return {
+		user: locals.user
+	};
+};
+
 export const actions: Actions = {
 	sendtestemail: async () => {
 		const resend = new Resend(RESEND_API_KEY);

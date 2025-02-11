@@ -23,11 +23,6 @@ export const appNavigation: NavigationItem[] = [
 		icon: 'search'
 	},
 	{
-		name: 'Deals',
-		href: '/deals',
-		icon: 'deals'
-	},
-	{
 		name: 'Account',
 		href: '/account',
 		icon: 'account'

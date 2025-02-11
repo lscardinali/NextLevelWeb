@@ -1,5 +1,9 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"hello_world": "Hello, {name} from en!",
-	"screenshots": "Screenshots"
+	"screenshots": "Screenshots",
+	"welcome_adventurer": "Welcome Adventurer!",
+	"youve_made_it_to_the_secret_level": "You've made it to the secret level!",
+	"email": "Email",
+	"signin": "SignIn"
 }

@@ -10,7 +10,7 @@ body {
 }
 
 html {
-	background-color: #000000;
+	background-color: #0a0a0a;
 	scrollbar-width: thin;
 	scrollbar-color: #888 #f1f1f1;
 }
@@ -43,5 +43,21 @@ html {
 }
 
 .card {
-	@apply rounded-2xl border border-neutral-800 bg-neutral-900;
+	@apply rounded-2xl border border-neutral-800;
+}
+
+.button {
+	@apply rounded-xl bg-white px-4 py-2 text-sm text-black transition-all hover:bg-neutral-200 active:scale-95 active:opacity-50;
+}
+
+.text-gradient {
+	@apply bg-clip-text text-transparent;
+}
+
+.divider {
+	@apply my-2 h-[1px] w-full bg-neutral-700;
+}
+
+.interactable {
+	@apply cursor-pointer transition-all hover:opacity-80 active:opacity-50;
 }

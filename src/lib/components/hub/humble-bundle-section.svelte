@@ -42,19 +42,21 @@
 		<div transition:fade={{ duration: 100 }} class="skeleton h-32 w-full rounded-xl"></div>
 		<div transition:fade={{ duration: 100 }} class="skeleton h-32 w-full rounded-xl"></div>
 	{:then bundles}
-		{#each bundles as bundle, index}
+		{#each bundles as bundle}
 			<a
-				transition:fade|global={{ duration: 300, delay: 100 }}
+				in:fade|global={{ duration: 300, delay: 100 }}
 				href={'https://humblebundle.com' + bundle.productUrl}
 				target="_blank"
 				class="relative flex h-32 overflow-hidden rounded-xl transition-all hover:scale-105"
 			>
 				<img class="absolute h-full w-full object-cover" alt="Humble Bundle" src={bundle.image} />
-				<div class="absolute bottom-0 h-1/2 w-full bg-gradient-to-t from-black/90 to-transparent"></div>
+				<div
+					class="absolute bottom-0 h-1/2 w-full bg-gradient-to-t from-black/90 to-transparent"
+				></div>
 				<h1 class="absolute top-2 left-2 rounded-md bg-black/50 p-2 text-xs backdrop-blur-xl">
 					{getRemainingTime(bundle.endDate)}
 				</h1>
-				<h1 class="absolute bottom-2 left-2 ">
+				<h1 class="absolute bottom-2 left-2">
 					{bundle.name}
 				</h1>
 			</a>

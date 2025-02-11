@@ -11,8 +11,6 @@
 
 	let games = $state<GameSimple[]>([]);
 
-	let { data }: { data: PageData } = $props();
-
 	async function searchGames() {
 		const response = await fetch(`/api/search/steam?name=${search}`);
 		games = (await response.json()) as GameSimple[];

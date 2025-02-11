@@ -14,12 +14,36 @@
 
 <h1>{m.hello_world({ name: 'SvelteKit User' })}</h1>
 <div>
-	<button onclick={() => switchToLanguage('en')}>en</button>
-	<button onclick={() => switchToLanguage('pt')}>pt</button>
-	<button onclick={() => switchToLanguage('es')}>es</button>
-	<button onclick={() => switchToLanguage('it')}>it</button>
-	<button onclick={() => switchToLanguage('de')}>de</button>
-	<button onclick={() => switchToLanguage('fr')}>fr</button>
-	<button onclick={() => switchToLanguage('hi')}>hi</button>
-	<button onclick={() => switchToLanguage('ru')}>ru</button>
+	<button onclick={() => switchToLanguage('en')} class="flex items-center gap-2">
+		<span class="text-2xl">🇺🇸</span>
+		<span>English</span>
+	</button>
+	<button onclick={() => switchToLanguage('pt')} class="flex items-center gap-2">
+		<span class="text-2xl">🇵🇹</span>
+		<span>Português</span>
+	</button>
+	<button onclick={() => switchToLanguage('es')} class="flex items-center gap-2">
+		<span class="text-2xl">🇪🇸</span>
+		<span>Español</span>
+	</button>
+	<button onclick={() => switchToLanguage('it')} class="flex items-center gap-2">
+		<span class="text-2xl">🇮🇹</span>
+		<span>Italiano</span>
+	</button>
+	<button onclick={() => switchToLanguage('de')} class="flex items-center gap-2">
+		<span class="text-2xl">🇩🇪</span>
+		<span>Deutsch</span>
+	</button>
+	<button onclick={() => switchToLanguage('fr')} class="flex items-center gap-2">
+		<span class="text-2xl">🇫🇷</span>
+		<span>Français</span>
+	</button>
+	<button onclick={() => switchToLanguage('hi')} class="flex items-center gap-2">
+		<span class="text-2xl">🇮🇳</span>
+		<span>हिन्दी</span>
+	</button>
+	<button onclick={() => switchToLanguage('ru')} class="flex items-center gap-2">
+		<span class="text-2xl">🇷🇺</span>
+		<span>Русский</span>
+	</button>
 </div>

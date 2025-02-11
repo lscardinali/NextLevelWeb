@@ -6,12 +6,15 @@
 	let chart: Chart;
 
 	interface ChartProps {
-		data: ChartData;
-		config: ChartConfiguration;
-		class: string;
+		//data: ChartData;
+		//config: ChartConfiguration;
+		class?: string;
 	}
 
-	let { data, config, class: className }: ChartProps = $props();
+	let {
+		// data = [], config,
+		class: className = ''
+	}: ChartProps = $props();
 
 	const chartData: ChartData = {
 		labels: [
