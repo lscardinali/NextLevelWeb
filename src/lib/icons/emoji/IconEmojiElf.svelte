@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" class="size-18" viewBox="0 0 32 32">
+<script lang="ts">
+	let { class: className = 'size-18' } = $props();
+</script>
+
+<svg xmlns="http://www.w3.org/2000/svg" class={className} viewBox="0 0 32 32">
 	<g fill="none">
 		<path
 			fill="#8868c9"

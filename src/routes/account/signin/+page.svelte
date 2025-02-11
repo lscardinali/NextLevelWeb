@@ -5,6 +5,7 @@
 	import Modal from '$lib/components/modal.svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import LanguageChooser from '$lib/components/language-chooser.svelte';
+	import { bounceInOut, elasticInOut } from 'svelte/easing';
 
 	let showModal = $state(false);
 </script>
